@@ -14,6 +14,8 @@ def is_negative_number_digit(n):
 if __name__ == '__main__':
     alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.?/\\[]{};':\"-=_+`~!@#$%^&*()\| "
     alphabet = alphabet + alphabet
+    print("Version 2.0")
+    print()
     stringToEncrypt = input("Please enter a message to encrypt: ")
     stringToEncrypt = stringToEncrypt.upper()
     shiftAmount = input("Please enter a whole number from 1-25 to be your key. ")
