@@ -2,6 +2,12 @@
 Created on Feb 19, 2022
 
 @author: ctate
+
+# Prerequisites
+
+```bash
+pkcon install -y python3-tkinter
+```
 '''
 def myFourPixels():
     forward(25)

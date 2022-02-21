@@ -2,6 +2,12 @@
 Created on Feb 20, 2022
 
 @author: ctate
+
+# Prerequisites
+
+```bash
+pkcon install -y python3-tkinter
+```
 '''
 import tkinter
 if __name__ == '__main__':

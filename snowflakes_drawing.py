@@ -2,6 +2,12 @@
 Created on Feb 19, 2022
 
 @author: ctate
+
+# Prerequisites
+
+```bash
+pkcon install -y python3-tkinter
+```
 '''
 import random
 from turtle import *
