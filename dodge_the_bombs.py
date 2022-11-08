@@ -1,63 +1,100 @@
 '''
 Created on Dec 3, 2019
 
-@author: ctate
+@author: NICO TATE
+
+Prerequisites: 
+
+pkcon install -y python3-tkinter
 '''
-from asyncio.tasks import wait
-from test.test_logging import secs
-from time import sleep
+import tkinter
+import random
+from _ast import If
+from pickle import TRUE
+
+gameOver = False
+score= 0
+squaresToClear = 0
+bombfield = []
+
+def create_bombfield(bombfield):
+    global squaresToClear
+    for row in range(0,10):
+        rowList = []
+        for column in range(0,10):
+            if random.randint(1,100) < 20:
+                rowList.append(1)
+            else:
+                rowList.append(0)
+                squaresToClear = squaresToClear + 1
+        bombfield.append(rowList)
+def on_click(event):
+    global score
+    global gameOver
+    global squaresToClear
+    square = event.widget
+    row = int(square.grid_info()["row"])
+    column = int(square.grid_info()["column"])
+    currentText = square.cget("text")
+    if gameOver == False:
+        if bombfield[row][column] == 1:
+            gameOver = True
+            square.config(bg = "red")
+            print("Game Over! Your score was:", score)
+        elif currentText == "    ":
+            square.config(bg = "tan")
+            totalBombs = 0
+            if row < 9:
+                if bombfield[row+1][column] == 1:
+                    totalBombs = totalBombs +1
+            if row > 0:
+                if bombfield[row-1][column] == 1:
+                    totalBombs = totalBombs +1
+            if column > 0:
+                if bombfield[row][column-1] == 1:
+                    totalBombs = totalBombs +1
+            if column < 9:
+                if bombfield[row][column+1] == 1:
+                    totalBombs = totalBombs +1
+            if row > 0 and column > 0:
+                if bombfield[row-1][column-1] == 1:
+                    totalBombs = totalBombs +1
+            if row < 9 and column > 0:
+                if bombfield[row+1][column-1] == 1:
+                    totalBombs = totalBombs +1
+            if row > 0 and column < 9:
+                if bombfield[row-1][column+1] == 1:
+                    totalBombs = totalBombs +1
+            if row < 9 and column < 9:
+                if bombfield[row+1][column+1] == 1:
+                    totalBombs = totalBombs +1
+            square.config(text = " " + str(totalBombs) + " ")
+            squaresToClear = squaresToClear - 1
+            score = score + 1
+            if squaresToClear == 0:
+                gameOver == True
+                print("Well Done! You found all the safe squares!")
+                print("Your score was:", score)
+def layout_window(window):
+    for rowNumber, rowList in enumerate(bombfield):
+        for columnNumber, columnEntry in enumerate(rowList):
+            if random.randint(1,100) < 25:
+                square = tkinter.Label(window, text = "    ", bg = "darkgreen")
+            elif random.randint(1,100) > 75:
+                square = tkinter.Label(window, text = "    ", bg = "seagreen")
+            else:
+                square = tkinter.Label(window, text = "    ", bg = "green")
+            square.grid(row = rowNumber, column = columnNumber)
+            square.bind("<Button-1>", on_click)
+def play_bombdodger():
+    create_bombfield(bombfield)
+    window = tkinter.Tk()
+    printfield(bombfield)
+    layout_window(window)
+    window.mainloop()
+
+def printfield(bombfield):
+    for rowList in bombfield:
+        print(rowList)
 if __name__ == '__main__':
-    print("abcdefghijklmnopqrstuvwxyz")
-    print("that is how you spell the alphabet")
-    print("a")
-    sleep(1)
-    print("b")
-    sleep(1)
-    print("c")
-    sleep(1)
-    print("d")
-    sleep(1)
-    print("e")
-    sleep(1)
-    print("f")
-    sleep(1)
-    print("g")
-    sleep(1)
-    print("h")
-    sleep(1)
-    print("i")
-    sleep(1)
-    print("j")
-    sleep(1)
-    print("k")
-    sleep(1)
-    print("l")
-    sleep(1)
-    print("m")
-    sleep(1)
-    print("n")
-    sleep(1)
-    print("o")
-    sleep(1)
-    print("p")
-    sleep(1)
-    print("q")
-    sleep(1)
-    print("r")
-    sleep(1)
-    print("s")
-    sleep(1)
-    print("t")
-    sleep(1)
-    print("u")
-    sleep(1)
-    print("v")
-    sleep(1)
-    print("w")
-    sleep(1)
-    print("x")
-    sleep(1)
-    print("y")
-    sleep(1)
-    print("z")
-    sleep(1)
+    play_bombdodger()

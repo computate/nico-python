@@ -14,7 +14,7 @@ if __name__ == '__main__':
     womenSays = ['"Who are you?"', '"How many beans make five?"', '"Why?"']
     manSays = ['"Beep boop!"', '''Don't eat frogs!"''', '"What time do you call this?"']
     consequence = ["world peace.", "chaos.", "a giant foot squashed them.", "rainbows."]
-    worldSaid = ['"Utter nonsense!"', '"Cheese is trending now."', '''"I'm melting!"''']
+    worldSaid = ['"Utter nonsense!"', '"Cheese is trending now."', '"BBBRRRRRRRUUUUUUHHHHHHH"', '''"I'm melting!"''']
     while True:
         print(random.choice(woman), "met", random.choice(man), random.choice(place))
         print("She was wearing", random.choice(sheWore))
