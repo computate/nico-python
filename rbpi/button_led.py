@@ -8,18 +8,20 @@ import RPi.GPIO as GPIO
 delay=.1
 inPin=21
 outPin=20
+lightActivated=False
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(inPin,GPIO.IN)
+GPIO.setup(inPin,GPIO.IN,pull_up_down=GPIO.PUD_UP)
 GPIO.setup(outPin,GPIO.OUT)
 try:
     while True:
         readVal=GPIO.input(inPin)
-        if readVal==1:
-            GPIO.output(outPin,0)
-            print("You are not pressing the button. The LED is off. ")
-        elif readVal==0:
-            GPIO.output(outPin,1)
-            print("You are pressing the button. The LED is on. ")
+        if readVal==0:
+            while readVal==0:
+                sleep(.1)
+                readVal=GPIO.input(inPin)
+            lightActivated=not lightActivated
+            GPIO.output(outPin,lightActivated)
+            print("The LED is %s. " % ("on" if lightActivated else "off"))
         sleep(delay)
 except KeyboardInterrupt:
     GPIO.cleanup()
