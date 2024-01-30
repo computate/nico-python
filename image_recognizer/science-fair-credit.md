@@ -1,4 +1,4 @@
-- **Model training basics ** **[https://github.com/Milstein/nerc_rhods_mlops/blob/main/02_model_training_basics.ipynb](https://github.com/Milstein/nerc_rhods_mlops/blob/main/02_model_training_basics.ipynb)**
+- **Model training basics [https://github.com/Milstein/nerc_rhods_mlops/blob/main/02_model_training_basics.ipynb](https://github.com/Milstein/nerc_rhods_mlops/blob/main/02_model_training_basics.ipynb)**
 
 
 - TensorFlow AIML Python packages
