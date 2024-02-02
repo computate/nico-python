@@ -75,9 +75,9 @@ if __name__ == '__main__':
                     train_labels.append(label_counter)
                     the_path = "%s/%s/%s" % (prepared_directory_path, entry.name, child_entry.name)
                     cv2.imwrite(the_path, processed_image)
-                    print("    %s done.\n"% total_image_counter)
                     total_image_counter = total_image_counter+1
                     child_image_counter = child_image_counter+1
+                    print("    #%s in %s done. (%s total images done.)\n"% (child_image_counter, entry.name, total_image_counter))
                     if child_image_counter == amount_of_training_images and amount_of_training_images > 0:
                         break
                     if child_image_counter > amount_of_training_images and amount_of_training_images > 0:
