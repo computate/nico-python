@@ -48,6 +48,7 @@ if __name__ == '__main__':
     train_labels = []
     category_names = []
     amount_of_training_images = 0
+    epochs = 9999
 
     print("Setting up arguments...")
     parser.add_argument("number", type=int)
@@ -61,7 +62,7 @@ if __name__ == '__main__':
     print("Finding Images in %s.\n"% original_directory_path)
     for entry in os.scandir(original_directory_path):
         if entry.is_dir():
-            #category_images = []
+            #category_images = []    
             #train_images.append(category_images)
             category_names.append(entry.name)
             print("\n%s\n"% entry.name)
@@ -101,7 +102,7 @@ if __name__ == '__main__':
     model.compile(optimizer='adam',
                   loss=tensorflow.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
                   metrics=['accuracy'])
-    model.fit(train_images, train_labels, epochs=label_counter)
+    model.fit(train_images, train_labels, epochs=epochs)
     print("Saving Model...")
     model.save(model_path)
 
