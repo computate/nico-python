@@ -33,8 +33,6 @@ while True:
     print("Removing Backround...")
     input_image = Image.open("%s/%s" % (directory_path, most_recent_file))
     output_image = rembg.remove(input_image)
-    #print("Showing new Image.")
-    #output_image.show()
 
     print("Cropping Image...")
     def trim(input_image):
@@ -47,8 +45,6 @@ while True:
         else:
             return input_image
     output_image = trim(output_image)
-    #print("Showing newer image.")
-    #output_image.show()
 
     print("Making the image B&W, Scaling the image, and adding padding...")
     output_image = numpy.array(ImageOps.pad(output_image, (28, 28), color=(0,0,0,255)))

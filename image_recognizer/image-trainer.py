@@ -30,8 +30,6 @@ def process_image(original_image_path):
     output_image = numpy.array(ImageOps.pad(output_image, (28, 28), color=(0,0,0,255)))
     output_image = cv2.cvtColor(cv2.cvtColor(output_image, cv2.COLOR_BGRA2BGR), cv2.COLOR_BGR2GRAY)
     return output_image
-    #pyplot.imshow(output_image)
-    #pyplot.show()
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Choose how many images to prepare")
@@ -62,8 +60,6 @@ if __name__ == '__main__':
     print("Finding Images in %s.\n"% original_directory_path)
     for entry in os.scandir(original_directory_path):
         if entry.is_dir():
-            #category_images = []    
-            #train_images.append(category_images)
             category_names.append(entry.name)
             print("\n%s\n"% entry.name)
             child_image_counter = 0
@@ -71,7 +67,6 @@ if __name__ == '__main__':
             for child_entry in os.scandir("%s/%s" % (original_directory_path, entry.name)):
                 if child_entry.is_file():
                     processed_image = process_image(child_entry.path)
-                    #category_images.append(processed_image)
                     train_images.append(processed_image)
                     train_labels.append(label_counter)
                     the_path = "%s/%s/%s" % (prepared_directory_path, entry.name, child_entry.name)
