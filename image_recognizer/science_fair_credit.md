@@ -30,3 +30,11 @@ To crop image to content, use PIL.
 
 - How to show the image using cv2
 [https://stackoverflow.com/questions/34966541/how-can-one-display-an-image-using-cv2-in-python](https://stackoverflow.com/questions/34966541/how-can-one-display-an-image-using-cv2-in-python)
+
+
+- How to capture a image from webcam in Python
+[https://www.geeksforgeeks.org/how-to-capture-a-image-from-webcam-in-python/](https://www.geeksforgeeks.org/how-to-capture-a-image-from-webcam-in-python/)
+
+
+- Reading and Writing JSON to a file in Python
+[https://www.geeksforgeeks.org/reading-and-writing-json-to-a-file-in-python/](https://www.geeksforgeeks.org/reading-and-writing-json-to-a-file-in-python/)
