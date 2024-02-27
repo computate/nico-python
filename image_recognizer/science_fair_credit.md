@@ -1,3 +1,5 @@
+**This file does not contain all my imports and all the websites I visited to make this project.**
+
 - **Model training basics [https://github.com/Milstein/nerc_rhods_mlops/blob/main/02_model_training_basics.ipynb](https://github.com/Milstein/nerc_rhods_mlops/blob/main/02_model_training_basics.ipynb)**
 
 

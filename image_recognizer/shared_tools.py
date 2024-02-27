@@ -29,4 +29,3 @@ def process_image(original_image_path):
     output_image = numpy.array(ImageOps.pad(output_image, (28, 28), color=(0,0,0,255)))
     output_image = cv2.cvtColor(cv2.cvtColor(output_image, cv2.COLOR_BGRA2BGR), cv2.COLOR_BGR2GRAY)
     return output_image
-
