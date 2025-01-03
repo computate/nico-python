@@ -1,1 +1,9 @@
 **/.ipynb_checkpoints
+model/**
+json/**
+original/**
+prepared/**
+test/**
+webcam/**
+__pycache__/**
+

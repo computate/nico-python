@@ -14,10 +14,10 @@ import shared_tools
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Choose how many images to prepare")
-    original_directory_path = '/home/ntate/Pictures/aiml/original'
-    prepared_directory_path = '/home/ntate/Pictures/aiml/prepared'
-    model_path = "/home/ntate/AIML/model"
-    json_path = "/home/ntate/AIML/json/"
+    original_directory_path = os.getenv("IMAGE_RECOGNIZER_ORIGINAL_PATH")
+    prepared_directory_path = os.getenv("IMAGE_RECOGNIZER_PREPARED_PATH")
+    model_path = os.getenv("IMAGE_RECOGNIZER_MODEL_PATH")
+    json_path = os.getenv("IMAGE_RECOGNIZER_JSON_PATH")
     json_name = "category-names.json"
     most_recent_file = None
     most_recent_time = 0
@@ -27,7 +27,7 @@ if __name__ == '__main__':
     train_labels = []
     category_names = []
     amount_of_training_images = 0
-    epochs = 9999
+    epochs = int(os.getenv("IMAGE_RECOGNIZER_EPOCHS", "9999"))
 
     print("Setting up arguments...")
     parser.add_argument("number", type=int)
@@ -80,7 +80,7 @@ if __name__ == '__main__':
                   metrics=['accuracy'])
     model.fit(train_images, train_labels, epochs=epochs)
     print("Saving Model...")
-    model.save(model_path)
+    model.save("%s/model.keras" % model_path)
 
     print("\nExporting category_names to a json file in \"%s\"...\n"% json_path)
     with open("%s/%s"% (json_path, json_name), "w") as file_writer:

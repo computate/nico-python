@@ -13,10 +13,10 @@ import shutil
 import xlwt
 import guesser
 if __name__ == '__main__':
-    json_path = "/home/ntate/AIML/json/"
+    json_path = os.getenv("IMAGE_RECOGNIZER_JSON_PATH")
     json_name = "category-names.json"
-    test_image_path = "/home/ntate/Pictures/aiml/test"
-    spreadsheet_path = "/home/ntate/AIML/spreadsheet-results"
+    test_image_path = os.getenv("IMAGE_RECOGNIZER_TEST_PATH")
+    spreadsheet_path = os.getenv("IMAGE_RECOGNIZER_SPREADSHEET_PATH")
     print("Importing the category-names.json file in \"%s/category-names.json...\""% json_path)
     with open("%s/%s"% (json_path, json_name)) as open_file:
         category_names = json.load(open_file)
@@ -29,7 +29,7 @@ if __name__ == '__main__':
                     print("test image: %s" % test_image_file.path)
                     processed_image = shared_tools.process_image(test_image_file.path)
                     prediction = guesser.guess(processed_image)
-                    print(prediction)
+                    print("prediction: %s" % prediction)
                     prediction_number = numpy.argmax(prediction[0])
                     row_num = category_names.index(category_directory.name)
                     col_num = prediction_number

@@ -10,13 +10,13 @@ import json
 import pyfiglet
 import shared_tools
 
-webcam_path = '/home/ntate/Pictures/Webcam'
-model_path = "/home/ntate/AIML/model"
-json_path = "/home/ntate/AIML/json"
+webcam_path = os.getenv("IMAGE_RECOGNIZER_WEBCAM_PATH")
+model_path = os.getenv("IMAGE_RECOGNIZER_MODEL_PATH")
+json_path = os.getenv("IMAGE_RECOGNIZER_JSON_PATH")
 json_name = "category-names.json"
 
-print("Loading the Model in \"%s\" (This will take a few seconds...)"% model_path)
-model = tensorflow.keras.models.load_model(model_path)
+print("Loading the Model in \"%s\" (This will take a few seconds...)"% ("%s/model.keras" % model_path))
+model = tensorflow.keras.models.load_model("%s/model.keras" % model_path)
 
 def guess(output_image):
     print("Importing the category-names.json file in \"%s/category-names.json...\""% json_path)
